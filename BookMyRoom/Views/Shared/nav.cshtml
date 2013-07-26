@@ -1,0 +1,40 @@
+﻿<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/">booK mY rooM</a>
+            <div class="nav-collapse collapse" id="main-menu">
+                <ul class="nav" id="main-menu-left">
+                    <li><a href="javascript:;" data-hash="rooms">roomS</a></li>
+                    <li><a href="javascript:;" data-hash="calendar">calendaR</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">schedulE <b class="caret"></b></a>
+                        <ul class="dropdown-menu" id="swatch-menu">
+                            <li><a href="../default/">today'S schedulE</a></li>
+                            <li class="divider"></li>
+                            <li><a href="../default/">thiS week'S schedulE</a></li>
+                            <li><a href="../default/">thiS month'S schedulE</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="preview-menu">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">bookinG <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="bootstrap.min.css">mY bookingS</a></li>
+                            <li><a href="bootstrap.css">makE neW bookinG</a></li>
+                            <li class="divider"></li>
+                            <li><a href="variables.less">bookinG foR roomS</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav pull-right" id="main-menu-right">
+                    <li><a rel="tooltip" href="javascript:;" title="Welcome @User.Identity.Name, click here to see your booking history" >welcomE @User.Identity.Name<i class="icon-user"></i></a></li>
+                    <li><a rel="tooltip" title="Logout" href="/logout">logouT<i class="icon-share-alt"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

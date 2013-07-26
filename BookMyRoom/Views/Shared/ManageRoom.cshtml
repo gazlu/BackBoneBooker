@@ -1,0 +1,98 @@
+﻿<script id="manageRoomsTemplate" type="text/template">
+    <div class="row" id="roomsForm">
+        <form id="manageRooms" class="">
+            <div class="span12">
+                <h2>Manage your rooms</h2>
+            </div>
+            <div class="span12">
+                <div class="span3">
+                    <div class="control-group">
+                        <label class="control-label" for="Number">Number</label>
+                        <div class="controls">
+                            <input type="hidden" name="Id" id="Id" value="0" />
+                            <input type="text" class="input-large" req="true" id="Number" valsection="main" name="Number"/>
+                            <p class="help-block">Number of the Room</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="span3">
+                    <div class="control-group">
+                        <label class="control-label" for="Name">Name</label>
+                        <div class="controls">
+                            <input type="text" class="input-large" req="true" valdata="alnum" valsection="main" id="Name" name="Name"/>
+                            <p class="help-block">Name of the Room</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="span3">
+                    <div class="control-group">
+                        <label class="control-label" for="Capacity">Capacity</label>
+                        <div class="controls">
+                            <input type="number" class="input-large" req="true" valdata="num" valsection="main" id="Capacity" name="Capacity"/>
+                            <p class="help-block">Capacity of the Room</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="span3">
+                    <div class="control-group">
+                        <label class="control-label" for="Projector">Projector</label>
+                        <div class="controls">
+                            <label class="checkbox">
+                                <input type="checkbox" id="Projector" name="Projector" value="true" />
+                                Room with Projector
+                            </label>
+                            <p class="help-block">Check if there is a projector in the Room</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="span3">
+                    <div class="control-group">
+                        <label class="control-label" for="Board">Board</label>
+                        <div class="controls">
+                            <label class="checkbox">
+                                <input type="checkbox" id="Board" name="Board" value="true" />
+                                Room with Board
+                            </label>
+                            <p class="help-block">Check if there is a Board in the Room</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="reset" class="btn">Cancel</button>
+            </div>
+        </form>
+    </div>
+</script>
+
+<script id="roomsListTemplate" type="text/template">
+    <div class="row" id="roomsList">
+        <table id="allRooms" class="table table-bordered table-striped hide">
+            <thead>
+                <tr>
+                    <th>Room Number</th>
+                    <th>Room Name</th>
+                    <th>Capacity</th>
+                    <th>Is Projector</th>
+                    <th>Is Board</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</script>
+
+<script id="roomRowTemplate" type="text/template">
+    <% if (typeof room != 'undefined') { %>
+    <td><%= room.get("Number") %></td>
+    <td><%= room.get("Name") %></td>
+    <td><%= room.get("Capacity") %></td>
+    <td> <input type="checkbox" disabled="disabled" name="chkProjector<%=Id %>" value="" <%= room.get('Projector')?'Checked':'' %> /></td>
+    <td> <input type="checkbox" disabled="disabled" name="chkBoard<%=Id %>" value="" <%= room.get('Board')?'Checked':'' %> /></td>
+    <td>
+        <a href="javascript:;" class="edit"><i class="icon-pencil"></i></a>
+        <a href="javascript:;" class="delete"><i class="icon-trash"></i></a>
+    </td>
+    <% } %>
+</script>

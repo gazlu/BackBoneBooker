@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="bookmyroomModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="bookmyroomModelStoreContainer">
+          <EntitySet Name="Bookings" EntityType="bookmyroomModel.Store.Bookings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Rooms" EntityType="bookmyroomModel.Store.Rooms" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Bookings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="60" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="StartTime" Type="time" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+          <Property Name="EndTime" Type="time" Nullable="false" />
+          <Property Name="Reccursive" Type="bit" />
+          <Property Name="ReccursiveType" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReccursiveValue" Type="int" />
+          <Property Name="Attendees" Type="text" />
+          <Property Name="BookedBy" Type="nvarchar" Nullable="false" MaxLength="70" />
+          <Property Name="BookedFor" Type="nvarchar" Nullable="false" MaxLength="70" />
+          <Property Name="BookedOn" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Rooms">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Capacity" Type="int" Nullable="false" />
+          <Property Name="Projector" Type="bit" Nullable="false" />
+          <Property Name="Board" Type="bit" Nullable="false" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bookmyroomModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="bookmyroomEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bookings" EntityType="bookmyroomModel.Booking" />
+          <EntitySet Name="Rooms" EntityType="bookmyroomModel.Room" />
+        </EntityContainer>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="0" />
+          <Property Type="Time" Name="StartTime" Nullable="false" Precision="7" />
+          <Property Type="DateTime" Name="EndDate" Nullable="false" Precision="0" />
+          <Property Type="Time" Name="EndTime" Nullable="false" Precision="7" />
+          <Property Type="Boolean" Name="Reccursive" />
+          <Property Type="String" Name="ReccursiveType" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ReccursiveValue" />
+          <Property Type="String" Name="Attendees" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BookedBy" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BookedFor" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Type="Binary" Name="BookedOn" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Number" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Capacity" Nullable="false" />
+          <Property Type="Boolean" Name="Projector" Nullable="false" />
+          <Property Type="Boolean" Name="Board" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bookmyroomModelStoreContainer" CdmEntityContainer="bookmyroomEntities">
+          <EntitySetMapping Name="Bookings">
+            <EntityTypeMapping TypeName="bookmyroomModel.Booking">
+              <MappingFragment StoreEntitySet="Bookings">
+                <ScalarProperty Name="BookedOn" ColumnName="BookedOn" />
+                <ScalarProperty Name="BookedFor" ColumnName="BookedFor" />
+                <ScalarProperty Name="BookedBy" ColumnName="BookedBy" />
+                <ScalarProperty Name="Attendees" ColumnName="Attendees" />
+                <ScalarProperty Name="ReccursiveValue" ColumnName="ReccursiveValue" />
+                <ScalarProperty Name="ReccursiveType" ColumnName="ReccursiveType" />
+                <ScalarProperty Name="Reccursive" ColumnName="Reccursive" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rooms">
+            <EntityTypeMapping TypeName="bookmyroomModel.Room">
+              <MappingFragment StoreEntitySet="Rooms">
+                <ScalarProperty Name="Board" ColumnName="Board" />
+                <ScalarProperty Name="Projector" ColumnName="Projector" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

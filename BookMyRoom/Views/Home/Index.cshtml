@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@section Styles{
+    <link href="~/Contents/fullcalendar/fullcalendar.css" rel="stylesheet" />
+    <link href="~/Contents/fullcalendar/fullcalendar.print.css" rel="stylesheet" />
+}
+<header class="jumbotron" id="overview">
+    <div class="row">
+        <div class="span6">
+            <h1>booK mY rooM</h1>
+            <p class="lead">easY and quicK</p>
+        </div>
+    </div>
+    @Html.Partial("ManageRoom")
+    @Html.Partial("CalendarView")
+</header>
+<div id="appContents">
+
+</div>
+@section Scripts{
+    <script src="~/Contents/fullcalendar/fullcalendar.min.js"></script>
+    <script src="~/Scripts/vendor/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="~/Scripts/app/helpers.js"></script>
+    <script src="~/Contents/bootstrap/js/bootstrap-validate.js"></script>
+    <script src="~/Scripts/app/roombook.js"></script>
+    <script src="~/Scripts/app/models.js"></script>
+    <script src="~/Scripts/app/collections.js"></script>
+    <script src="~/Scripts/app/appviews.js"></script>
+    <script src="~/Scripts/app/roomviews.js"></script>
+    <script src="~/Scripts/app/bookingviews.js"></script>
+    <script src="~/Scripts/app/router.js"></script>
+    <script src="~/Scripts/app/appcal.js"></script>
+    <script>
+        new App.Router;
+        Backbone.history.start();
+    </script>
+}
