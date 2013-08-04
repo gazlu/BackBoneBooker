@@ -1,7 +1,7 @@
 BackBoneBooker
 ==============
 
-Room Booking System with BackboneJS
+Single Page Room Booking System with BackboneJS
 
 Functionalities:
 
