@@ -5,8 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f47a3310707f4971a2a2667598deb31a" Name="Diagram1">
-        <EntityTypeShape EntityType="bookmyroomModel.Booking" Width="1.5" PointX="1.625" PointY="1.625" />
-        <EntityTypeShape EntityType="bookmyroomModel.Room" Width="1.5" PointX="3.25" PointY="1.625" />
+        <EntityTypeShape EntityType="bookmyroomModel.Booking" Width="1.5" PointX="2.75" PointY="1.75" />
+        <EntityTypeShape EntityType="bookmyroomModel.Room" Width="1.5" PointX="5.75" PointY="1.75" />
+        <AssociationConnector Association="bookmyroomModel.FK_Bookings_Rooms" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Book My Room - @ViewBag.Title</title>
+    <title>booK mY rooM - @ViewBag.Title</title>
     <link href="~/Contents/bootstrap/css/bootstrap.flatly.min.css" rel="stylesheet" />
     <link href="~/Contents/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
     <link href="~/Contents/bootstrap/css/font-awesome.css" rel="stylesheet" />
@@ -19,7 +19,7 @@
         @RenderBody()
 
         <footer id="footer">
-            <p class="pull-right"><a href="#top">Back to top</a></p>
+            <p class="pull-right"><a href="javascript:;" class="scrollLink">Back to top</a></p>
         </footer>
     </div>
 </body>
@@ -31,5 +31,6 @@
 <script src="~/Scripts/vendor/backbone-min.js"></script>
 <script src="~/Contents/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
 <script src="~/Scripts/vendor/xdate.js"></script>
+<script src="~/Scripts/vendor/scrollup.js"></script>
 @RenderSection("Scripts", false)
 </html>

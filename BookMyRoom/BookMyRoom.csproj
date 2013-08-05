@@ -160,8 +160,11 @@
     <Content Include="Contents\bootstrap\css\bootstrap.min.css" />
     <Content Include="Contents\bootstrap\css\bootswatch.css" />
     <Content Include="Contents\bootstrap\css\font-awesome.css" />
+    <Content Include="Contents\bootstrap\img\bookbg.gif" />
     <Content Include="Contents\bootstrap\img\glyphicons-halflings-white.png" />
     <Content Include="Contents\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="Contents\bootstrap\img\roombooklogo.jpg" />
+    <Content Include="Contents\bootstrap\js\boot-validate.js" />
     <Content Include="Contents\bootstrap\js\bootstrap-datetimepicker.min.js" />
     <Content Include="Contents\bootstrap\js\bootstrap-modal.js" />
     <Content Include="Contents\bootstrap\js\bootstrap-validate.js" />
@@ -190,6 +193,7 @@
     <Content Include="Scripts\vendor\jquery-ui-1.10.2.custom.min.js" />
     <Content Include="Scripts\vendor\jquery.min.js" />
     <Content Include="Scripts\vendor\jquery.smooth-scroll.min.js" />
+    <Content Include="Scripts\vendor\scrollup.js" />
     <Content Include="Scripts\vendor\underscore-min.js" />
     <Content Include="Scripts\vendor\xdate.js" />
     <Content Include="Scripts\_references.js" />
@@ -257,6 +261,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\CalendarView.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\ValidForm.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

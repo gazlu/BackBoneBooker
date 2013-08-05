@@ -26,6 +26,7 @@ namespace BookMyRoom
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.MediaTypeMappings.Add(
                 new QueryStringMapping("xml", "true", "application/xml")
             );
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
         }
     }
 }

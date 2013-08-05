@@ -16,6 +16,7 @@ namespace BookMyRoom.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
+        public int RoomId { get; set; }
         public System.DateTime StartDate { get; set; }
         public System.TimeSpan StartTime { get; set; }
         public System.DateTime EndDate { get; set; }
@@ -27,5 +28,7 @@ namespace BookMyRoom.Models
         public string BookedBy { get; set; }
         public string BookedFor { get; set; }
         public byte[] BookedOn { get; set; }
+    
+        public virtual Room Room { get; set; }
     }
 }

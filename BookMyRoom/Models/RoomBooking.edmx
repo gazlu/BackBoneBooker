@@ -8,6 +8,10 @@
         <EntityContainer Name="bookmyroomModelStoreContainer">
           <EntitySet Name="Bookings" EntityType="bookmyroomModel.Store.Bookings" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Rooms" EntityType="bookmyroomModel.Store.Rooms" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Bookings_Rooms" Association="bookmyroomModel.Store.FK_Bookings_Rooms">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="Bookings" EntitySet="Bookings" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Bookings">
           <Key>
@@ -15,6 +19,7 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="60" />
+          <Property Name="RoomId" Type="int" Nullable="false" />
           <Property Name="StartDate" Type="date" Nullable="false" />
           <Property Name="StartTime" Type="time" Nullable="false" />
           <Property Name="EndDate" Type="date" Nullable="false" />
@@ -38,6 +43,18 @@
           <Property Name="Projector" Type="bit" Nullable="false" />
           <Property Name="Board" Type="bit" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Bookings_Rooms">
+          <End Role="Rooms" Type="bookmyroomModel.Store.Rooms" Multiplicity="1" />
+          <End Role="Bookings" Type="bookmyroomModel.Store.Bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bookings">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -45,6 +62,10 @@
         <EntityContainer Name="bookmyroomEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bookings" EntityType="bookmyroomModel.Booking" />
           <EntitySet Name="Rooms" EntityType="bookmyroomModel.Room" />
+          <AssociationSet Name="FK_Bookings_Rooms" Association="bookmyroomModel.FK_Bookings_Rooms">
+            <End Role="Room" EntitySet="Rooms" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Booking">
           <Key>
@@ -52,6 +73,7 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Title" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="RoomId" Nullable="false" />
           <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="0" />
           <Property Type="Time" Name="StartTime" Nullable="false" Precision="7" />
           <Property Type="DateTime" Name="EndDate" Nullable="false" Precision="0" />
@@ -63,6 +85,7 @@
           <Property Type="String" Name="BookedBy" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="BookedFor" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
           <Property Type="Binary" Name="BookedOn" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Room" Relationship="bookmyroomModel.FK_Bookings_Rooms" FromRole="Booking" ToRole="Room" />
         </EntityType>
         <EntityType Name="Room">
           <Key>
@@ -74,7 +97,20 @@
           <Property Type="Int32" Name="Capacity" Nullable="false" />
           <Property Type="Boolean" Name="Projector" Nullable="false" />
           <Property Type="Boolean" Name="Board" Nullable="false" />
+          <NavigationProperty Name="Bookings" Relationship="bookmyroomModel.FK_Bookings_Rooms" FromRole="Room" ToRole="Booking" />
         </EntityType>
+        <Association Name="FK_Bookings_Rooms">
+          <End Type="bookmyroomModel.Room" Role="Room" Multiplicity="1" />
+          <End Type="bookmyroomModel.Booking" Role="Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -95,6 +131,7 @@
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
                 <ScalarProperty Name="StartTime" ColumnName="StartTime" />
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

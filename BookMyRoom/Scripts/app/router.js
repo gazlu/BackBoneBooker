@@ -3,18 +3,33 @@ App.rooms.fetch().then(function () {
     new App.Views.App({ collection: App.rooms });
 });
 
+App.bookings = new App.Collections.Bookings;
+App.bookings.fetch().then(function () {
+    new App.Views.Bookings({ collection: App.bookings });
+});
+
 App.Router = Backbone.Router.extend({
     routes: {
         '': 'index',
+        '#': 'index',
         'rooms': 'rooms',
-        'calendar': 'calendar'
+        'calendar': 'calendar',
+        'today': 'today',
+        'week': 'week',
+        'month': 'month',
+        'own': 'own',
+        'roombooking': 'roombooking'
     },
 
     index: function () {
         //console.log('the index page');
+        $('#overview').slideDown();
+        $('#appContents').html('');
     },
 
     rooms: function () {
+        $('#overview').slideUp();
+        window.document.title = 'booK mY rooM - managE roomS';
         //Load Room Main View
         var _manageRoomsView = new App.Views.ManageRoom({ collection: App.rooms });
 
@@ -30,16 +45,12 @@ App.Router = Backbone.Router.extend({
     },
 
     calendar: function () {
-        App.bookings = new App.Collections.Bookings;
-        App.bookings.fetch().then(function () {
-            new App.Views.Bookings({ collection: App.bookings });
-        });
-
-        var _calendarView = new App.Views.CalendarView({ collection: App.bookings });
+        $('#overview').slideUp();
+        window.document.title = 'booK mY rooM - vieW/managE bookingS';
+        var _calendarView = new App.Views.CalendarView({ rooms: App.rooms, collection: App.bookings});
         $('#appContents').html(_calendarView.render().el);
-        window.App.Helpers.showCalendar(App.bookings);
-        $('.datetime').datetimepicker({
-            format: 'MM/dd/yyyy hh:mm:ss'
-        });
+        var _roomOption = new App.Views.RoomOptionsView().render();
+        window.App.Helpers.showCalendar(App.bookings, _roomOption);
+        $('.helpButton').popover();
     }
 });

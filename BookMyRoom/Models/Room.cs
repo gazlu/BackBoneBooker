@@ -14,11 +14,18 @@ namespace BookMyRoom.Models
     
     public partial class Room
     {
+        public Room()
+        {
+            this.Bookings = new HashSet<Booking>();
+        }
+    
         public int Id { get; set; }
         public string Number { get; set; }
         public string Name { get; set; }
         public int Capacity { get; set; }
         public bool Projector { get; set; }
         public bool Board { get; set; }
+    
+        public virtual ICollection<Booking> Bookings { get; set; }
     }
 }

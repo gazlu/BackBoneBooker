@@ -17,5 +17,10 @@ namespace BookMyRoom.Controllers.Web
         {
             return PartialView("ManageRoom");
         }
+
+        public ActionResult ValidForm()
+        {
+            return View();
+        }
     }
 }

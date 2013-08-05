@@ -16,4 +16,12 @@
     $('ul.nav > li > a').click(function () {
         window.location.hash = $(this).data('hash');
     });
+
+    $('a.brand').click(function () {
+        window.location.hash = $(this).data('hash');
+    });
+
+    $('ul.dropdown-menu > li > a').click(function () {
+        window.location.hash = $(this).data('hash');
+    });
 })();

@@ -1,9 +1,21 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "easY and quicK";
 }
 @section Styles{
     <link href="~/Contents/fullcalendar/fullcalendar.css" rel="stylesheet" />
     <link href="~/Contents/fullcalendar/fullcalendar.print.css" rel="stylesheet" />
+    <style>
+        #overview
+        {
+            background-image: url(http://localhost:63005/Contents/bootstrap/img/roombooklogo.jpg);
+            background-position: 100% 50%;
+            background-repeat: no-repeat;
+            -moz-background-size: 15%;
+            -o-background-size: 15%;
+            -webkit-background-size: 15%;
+            background-size: 15%;
+        }
+    </style>
 }
 <header class="jumbotron" id="overview">
     <div class="row">
@@ -34,5 +46,9 @@
     <script>
         new App.Router;
         Backbone.history.start();
+
+        $(function () {
+            $(".scrollLink").scrollUp();
+        });
     </script>
 }
